@@ -21,13 +21,17 @@ contract CrowdFunding is Ownable {
 		uint indexed id,
 		address indexed owner,
 		uint indexed deadline,
-		uint target
+		uint target,
+		string imageCdn,
+		string title,
+		string desc
 	);
 
 	event Donated(
 		uint indexed id,
 		address indexed donator,
-		uint indexed amount
+		uint indexed amount,
+		uint time
 	);
 
 	event FundraiserWithdrawed(uint indexed id, uint indexed amount);
@@ -61,7 +65,13 @@ contract CrowdFunding is Ownable {
 
 	uint public fundraiserCounter = 0;
 
-	function createFundraiser(uint _deadline, uint _target) public {
+	function createFundraiser(
+		uint _deadline,
+		uint _target,
+		string memory _imgCdn,
+		string memory _title,
+		string memory _desc
+	) public {
 		if (_deadline < block.timestamp)
 			revert CrowdFunding__DeadlineNotValid();
 		if (_target <= 0) revert CrowdFunding__TargetNotValid();
@@ -83,7 +93,10 @@ contract CrowdFunding is Ownable {
 			fundraiserCounter,
 			msg.sender,
 			_deadline,
-			_target
+			_target,
+			_imgCdn,
+			_title,
+			_desc
 		);
 		fundraiserCounter += 1;
 	}
@@ -102,7 +115,7 @@ contract CrowdFunding is Ownable {
 
 		// fundraisers[msg.sender].push(Donations(msg.value, _id));
 		// fundraisers[_id][msg.sender] += msg.value;
-		emit Donated(_id, msg.sender, msg.value);
+		emit Donated(_id, msg.sender, msg.value, block.timestamp);
 	}
 
 	function fundraiserWithdraw(uint _id) public {

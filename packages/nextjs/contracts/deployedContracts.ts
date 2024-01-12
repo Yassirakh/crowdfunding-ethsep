@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     CrowdFunding: {
-      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       abi: [
         {
           inputs: [],
@@ -85,6 +85,12 @@ const deployedContracts = {
               name: "amount",
               type: "uint256",
             },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "time",
+              type: "uint256",
+            },
           ],
           name: "Donated",
           type: "event",
@@ -141,6 +147,24 @@ const deployedContracts = {
               name: "target",
               type: "uint256",
             },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "imageCdn",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "title",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "desc",
+              type: "string",
+            },
           ],
           name: "FundraiserCreated",
           type: "event",
@@ -194,6 +218,21 @@ const deployedContracts = {
               internalType: "uint256",
               name: "_target",
               type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_imgCdn",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_title",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_desc",
+              type: "string",
             },
           ],
           name: "createFundraiser",

@@ -36,5 +36,14 @@
   },
   "resolutions": {
     "usehooks-ts@^2.7.2": "patch:usehooks-ts@npm:^2.7.2#./.yarn/patches/usehooks-ts-npm-2.7.2-fceffe0e43.patch"
+  },
+  "dependencies": {
+    "@cloudinary/url-gen": "^1.14.0",
+    "@mantine/core": "^7.4.1",
+    "@uploadcare/upload-client": "^6.12.0",
+    "@web3uikit/core": "1.1.0",
+    "@web3uikit/icons": "^1.1.2",
+    "@web3uikit/web3": "^0.3.2",
+    "imagekitio-react": "^3.0.0"
   }
 }
