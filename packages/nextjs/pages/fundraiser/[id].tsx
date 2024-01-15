@@ -42,10 +42,10 @@ const FundraiserPage: NextPage = () => {
         eventName: "FundraiserCreated",
         fromBlock: scaffoldConfig.fromBlock,
         watch: false,
-        filters: { id: id != undefined ? BigInt(Number(id)) : '' },
-        blockData: true,
-        transactionData: true,
-        receiptData: true,
+        filters: { id: id != undefined ? BigInt(Number(id)) : undefined },
+        // blockData: true,
+        // transactionData: true,
+        // receiptData: true,
         });
     
     const {
@@ -57,11 +57,13 @@ const FundraiserPage: NextPage = () => {
         eventName: "Donated",
         fromBlock: scaffoldConfig.fromBlock,
         watch: false,
-        filters: { id: id != undefined ? BigInt(Number(id)) : '' },
-        blockData: true,
-        transactionData: true,
-        receiptData: true,
+        filters: { id: id !== undefined ? BigInt(Number(id)) : undefined },
+        // blockData: true,
+        // transactionData: true,
+        // receiptData: true,
         });
+
+    console.log(events)
     
     const { data:campaign } = useScaffoldContractRead({
         contractName: "CrowdFunding",

@@ -63,7 +63,7 @@ export function CreateCampaign() {
 
             const _deadline = BigInt(Math.round(new Date(String(formData.get('campaign-enddate'))).getTime()/1000));
             // let testDate = new Date();
-            // testDate.setMinutes(40)
+            // testDate.setMinutes(30)
             // let _deadline = BigInt(Math.round(testDate.getTime()/1000))
             const _target = BigInt(Web3.utils.toWei(Number(formData.get('target-amount')), 'ether'));
             const _imgCdn = String(uploadRes.cdnUrl);
@@ -159,7 +159,7 @@ export function CreateCampaign() {
                             id="date-picker"
                             onChange={function noRefCheck(){}}
                             validation={{
-                                min: (new Date()).toISOString().split('T')[0],
+                                min: (new Date(new Date().getTime() + 86400000)).toISOString().split('T')[0],
                                 required: true
                             }}
                             value=""

@@ -11,8 +11,8 @@ export function CampaignCard(props:any) {
 
     console.log(props)
     const onGoing:boolean = props.props.onGoing;
-    const fundraiseId:Number = props.props.index;
     const campaignData:any = props.props.props.args;
+    const fundraiseId:Number = campaignData.id;
     const accountState = useAccount();
     const [raisedAmount, setRaisedAmount] = useState("")
     const [targetAmount, setTargetAmount] = useState("")
