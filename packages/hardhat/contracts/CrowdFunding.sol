@@ -2,6 +2,7 @@
 pragma solidity ^0.8.8;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "hardhat/console.sol";
 
 error CrowdFunding__NoEthSent();
 error CrowdFunding__TargetNotValid();
@@ -61,9 +62,9 @@ contract CrowdFunding is Ownable {
 
 	mapping(uint => Fundraiser) public fundraisers;
 
-	mapping(address => uint) public donations;
+	// mapping(asddress => uint) public donations;
 
-	uint public fundraiserCounter = 0;
+	uint public fundraiserCounter = 1;
 
 	function createFundraiser(
 		uint _deadline,
@@ -162,8 +163,45 @@ contract CrowdFunding is Ownable {
 		return fundraisers[_id].donations[donator].amount;
 	}
 
-	// function getFundraiser(uint _id) public view returns (Fundraiser memory) {
-	//     Fundraiser memory fundraiser = fundraisers[_id];
-	//     return fundraiser;
-	// }
+	function getRaisedAmountPerCampaigns(
+		uint[] memory _ids
+	) public view returns (uint[] memory, bool[] memory) {
+		// console.log(_ids[0]);
+		uint[] memory amounts = new uint[](_ids.length);
+		bool[] memory withdrawen = new bool[](_ids.length);
+		for (uint i = 0; i < _ids.length; i++) {
+			amounts[i] = fundraisers[_ids[i]].raisedAmount;
+			withdrawen[i] = fundraisers[_ids[i]].withdrawen;
+		}
+		return (amounts, withdrawen);
+	}
+
+	function getDonationsAmountPerCampaignsPerDonator(
+		uint[] memory _ids,
+		address donator
+	)
+		public
+		view
+		returns (
+			uint[] memory,
+			uint[] memory,
+			uint[] memory,
+			uint[] memory,
+			bool[] memory
+		)
+	{
+		uint[] memory amounts = new uint[](_ids.length);
+		uint[] memory deadlines = new uint[](_ids.length);
+		uint[] memory raisedAmounts = new uint[](_ids.length);
+		uint[] memory targetAmounts = new uint[](_ids.length);
+		bool[] memory withdrawen = new bool[](_ids.length);
+		for (uint i = 0; i < _ids.length; i++) {
+			amounts[i] = fundraisers[_ids[i]].donations[donator].amount;
+			deadlines[i] = fundraisers[_ids[i]].deadline;
+			raisedAmounts[i] = fundraisers[_ids[i]].raisedAmount;
+			targetAmounts[i] = fundraisers[_ids[i]].target;
+			withdrawen[i] = fundraisers[_ids[i]].donations[donator].withdrawen;
+		}
+		return (amounts, deadlines, raisedAmounts, targetAmounts, withdrawen);
+	}
 }

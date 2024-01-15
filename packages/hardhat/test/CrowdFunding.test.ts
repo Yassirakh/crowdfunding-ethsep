@@ -31,7 +31,7 @@ describe("YourContract", function () {
       donator2 = crowdFunding.connect(accounts[2]);
       // console.log(donator1);
       // process.exit(0)
-      const createTxResponse = await crowdFunding.createFundraiser(deadline.getTime(), target);
+      const createTxResponse = await crowdFunding.createFundraiser(deadline.getTime(), target, '', '', '');
       createTxResponse.wait(1);
 
   })

@@ -416,20 +416,11 @@ async function donate() {
       ],
         '0x5FbDB2315678afecb367f032d93F642f64180aa3',
         )
-    console.log(CrowdFunding.address)
+    
+    // console.log(await CrowdFunding.fundraisers(0))
     const donatorConnectedFundraise = CrowdFunding.connect(donator);
 
-    let deadline = new Date();
-    deadline.setHours(deadline.getHours() + 1);
-    let target = ethers.utils.parseEther('1')
-    const createTxResponse = await donatorConnectedFundraise.createFundraiser(deadline.getTime(), target, '', '', '');
-    await createTxResponse.wait(1)
-
-    const donateTxResponse = await donatorConnectedFundraise.donate(1, {value: ethers.utils.parseEther('0.2014')});
-    await donateTxResponse.wait(1)
-
-    const fundraiser = await CrowdFunding.fundraisers(1);
-    console.log(fundraiser);
+    console.log(await CrowdFunding.getRaisedAmountPerCampaigns([1, 2]))
 
 }
 
