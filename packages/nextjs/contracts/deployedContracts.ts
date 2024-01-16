@@ -466,7 +466,7 @@ const deployedContracts = {
   },
   11155111: {
     CrowdFunding: {
-      address: "0x0EeCE51312246715193CEAA4E693F4734e893F70",
+      address: "0xc338EBc32272D2D9B3Af4Dc10BdCC5Da062a1184",
       abi: [
         {
           inputs: [],
@@ -815,13 +815,68 @@ const deployedContracts = {
           type: "function",
         },
         {
-          inputs: [],
+          inputs: [
+            {
+              internalType: "uint256[]",
+              name: "_ids",
+              type: "uint256[]",
+            },
+            {
+              internalType: "address",
+              name: "donator",
+              type: "address",
+            },
+          ],
+          name: "getDonationsAmountPerCampaignsPerDonator",
+          outputs: [
+            {
+              internalType: "uint256[]",
+              name: "",
+              type: "uint256[]",
+            },
+            {
+              internalType: "uint256[]",
+              name: "",
+              type: "uint256[]",
+            },
+            {
+              internalType: "uint256[]",
+              name: "",
+              type: "uint256[]",
+            },
+            {
+              internalType: "uint256[]",
+              name: "",
+              type: "uint256[]",
+            },
+            {
+              internalType: "bool[]",
+              name: "",
+              type: "bool[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256[]",
+              name: "_ids",
+              type: "uint256[]",
+            },
+          ],
           name: "getRaisedAmountPerCampaigns",
           outputs: [
             {
-              internalType: "address",
+              internalType: "uint256[]",
               name: "",
-              type: "address",
+              type: "uint256[]",
+            },
+            {
+              internalType: "bool[]",
+              name: "",
+              type: "bool[]",
             },
           ],
           stateMutability: "view",

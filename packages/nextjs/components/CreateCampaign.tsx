@@ -4,19 +4,18 @@ import { FormEvent, useState } from "react"
 import { useAccount } from "wagmi";
 import { uploadFile } from '@uploadcare/upload-client'
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useScaffoldContractWrite } from '~~/hooks/scaffold-eth';
 import Web3 from 'web3';
 
 
 export function CreateCampaign() {
     
-    const [isModalOpen, setModalOpen] = useState(false);
-    const [isLoading, setLoading] = useState(false);
-    const [uploadedImage, setUploadedImage] = useState(new Blob());
+    const [isModalOpen, setModalOpen] = useState<any>(false);
+    const [isLoading, setLoading] = useState<any>(false);
+    const [uploadedImage, setUploadedImage] = useState<any>(new Blob());
     const accountState = useAccount();
-    const [error, setError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
+    const [error, setError] = useState<any>(false);
+    const [errorMessage, setErrorMessage] = useState<any>("");
     const blockConfirmations = Number(process.env.NEXT_PUBLIC_BLOCK_CONFIRMATIONS)
 
     const { writeAsync, isError } = useScaffoldContractWrite({

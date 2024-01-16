@@ -7,7 +7,7 @@ import { CampaignCard } from "./CampaignCard";
 export function CampaignsList() {
     const [ongoingCampaigns, setOngoingCampaigns] = useState<any[]>([])
     const [pastCampaigns, setPastCampaigns] = useState<any[]>([])
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState<any>(false)
     const [errorLoading, setErrorLoading] = useState<any>()
 
     const {

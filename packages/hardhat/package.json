@@ -59,8 +59,12 @@
     "dotenv": "^16.0.3",
     "envfile": "^6.18.0",
     "framer-motion": "^10.18.0",
+    "ganache-cli": "^6.12.2",
     "notiflix": "^3.2.7",
     "qrcode": "^1.5.1",
-    "web3": "^4.3.0"
+    "web3": "^4.3.0",
+    "@cloudinary/url-gen": "^1.14.0",
+    "@mantine/core": "^7.4.1",
+    "imagekitio-react": "^3.0.0"
   }
 }

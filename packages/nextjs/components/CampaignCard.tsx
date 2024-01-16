@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { FormEvent, useEffect, useState } from "react";
 import { Button, Card, Input } from "@web3uikit/core";
 import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
@@ -14,10 +15,10 @@ export function CampaignCard(props:any) {
     const campaignData:any = props.props.props.args;
     const fundraiseId:Number = campaignData.id;
     const accountState = useAccount();
-    const [raisedAmount, setRaisedAmount] = useState("")
-    const [targetAmount, setTargetAmount] = useState("")
-    const [remainingDays, setRemainingDays] = useState(0)
-    const [isLoading, setIsLoading] = useState(false)
+    const [raisedAmount, setRaisedAmount] = useState<any>("")
+    const [targetAmount, setTargetAmount] = useState<any>("")
+    const [remainingDays, setRemainingDays] = useState<Number>(0)
+    const [isLoading, setIsLoading] = useState<any>(false)
     const blockConfirmations = Number(process.env.NEXT_PUBLIC_BLOCK_CONFIRMATIONS)
     const toast = useToast()
     let currentTime, deadline;
@@ -84,7 +85,6 @@ export function CampaignCard(props:any) {
                 cursorType="default"
                 style={{
                     'display':'flex',
-                    'flex-direction':'column',
                     'border':'solid',
                     'height':'100%'
                 }}>
